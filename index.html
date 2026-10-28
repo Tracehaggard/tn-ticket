@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="build" content="ticket-2026-10-28a">
+<meta name="robots" content="noindex,nofollow">
+<title>Support Request — TNINFOTECH</title>
+<style>
+:root{
+  --ink:#15171b; --ink-2:#3d434d; --ink-3:#767e8b;
+  --line:#dfe3e8; --line-2:#eef1f4; --bg:#f6f7f9;
+  --accent:#d65a14; --accent-d:#b94a0d; --ok:#0a7d3f;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  padding:0 18px env(safe-area-inset-bottom) 18px;
+}
+.wrap{max-width:640px;margin:0 auto;padding:38px 0 60px}
+header{margin-bottom:26px}
+.brand{font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink)}
+.brand span{color:var(--accent)}
+h1{font-size:27px;line-height:1.2;margin:16px 0 7px;letter-spacing:-.02em}
+.lede{color:var(--ink-3);font-size:14.5px;margin:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.card-b{padding:22px}
+label.f{display:block;font-size:12px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--ink-2);margin-bottom:7px}
+.opt{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink-3)}
+.inp{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 13px;font:inherit;
+  color:var(--ink);background:#fff;outline:none;transition:border-color .12s,box-shadow .12s}
+.inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(214,90,20,.12)}
+textarea.inp{min-height:150px;resize:vertical;line-height:1.55}
+.mb{margin-bottom:18px}
+.row{display:flex;gap:14px}
+.row>div{flex:1;min-width:0}
+.seg{display:flex;gap:8px}
+.seg label{flex:1;position:relative}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:block;text-align:center;border:1px solid var(--line);border-radius:8px;
+  padding:10px 8px;font-size:13.5px;font-weight:600;cursor:pointer;background:#fff;transition:.12s}
+.seg input:checked+span{border-color:var(--accent);background:#fff7f2;color:var(--accent-d)}
+.seg input:focus-visible+span{box-shadow:0 0 0 3px rgba(214,90,20,.18)}
+.hint{font-size:12.5px;color:var(--ink-3);margin-top:6px}
+.btn{display:block;width:100%;border:1px solid var(--accent);background:var(--accent);color:#fff;
+  border-radius:8px;padding:14px;font:inherit;font-weight:650;font-size:15.5px;cursor:pointer;
+  transition:.12s}
+.btn:hover:not(:disabled){background:var(--accent-d);border-color:var(--accent-d)}
+.btn:disabled{opacity:.6;cursor:default}
+.err{background:#fef3f2;border:1px solid #f2c4bd;color:#912018;border-radius:8px;
+  padding:12px 14px;font-size:13.5px;margin-bottom:18px}
+.foot{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:22px;line-height:1.7}
+.foot a{color:var(--ink-2)}
+/* the trap: never shown, never tabbed to, only bots fill it */
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.done{text-align:center;padding:46px 26px}
+.tick{width:54px;height:54px;border-radius:50%;background:#e8f7ee;color:var(--ok);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:27px;font-weight:700}
+.done h2{margin:0 0 8px;font-size:21px}
+.done p{color:var(--ink-3);margin:0 auto;max-width:400px}
+.ref{display:inline-block;margin-top:18px;background:var(--bg);border:1px solid var(--line);
+  border-radius:7px;padding:9px 14px;font:600 14px ui-monospace,Menlo,monospace;letter-spacing:.04em}
+.again{margin-top:24px;background:none;border:0;color:var(--accent);font:inherit;font-weight:620;cursor:pointer;
+  text-decoration:underline;text-underline-offset:3px}
+@media(max-width:560px){
+  .wrap{padding:26px 0 44px}
+  h1{font-size:23px}
+  .row{flex-direction:column;gap:18px}
+  .card-b{padding:18px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">TNINFO<span>TECH</span></div>
+    <h1>Submit a support request</h1>
+    <p class="lede">Tell us what's going on and we'll get back to you. For anything urgent, call the office.</p>
+  </header>
+
+  <div class="card">
+    <div class="card-b" id="pane">
+      <div id="err" class="err" style="display:none"></div>
+
+      <form id="f" novalidate>
+        <div class="row mb">
+          <div>
+            <label class="f" for="company">Company</label>
+            <input class="inp" id="company" maxlength="120" autocomplete="organization" required>
+          </div>
+          <div>
+            <label class="f" for="contact">Your name</label>
+            <input class="inp" id="contact" maxlength="120" autocomplete="name" required>
+          </div>
+        </div>
+
+        <div class="row mb">
+          <div>
+            <label class="f" for="email">Email</label>
+            <input class="inp" id="email" type="email" maxlength="160" autocomplete="email" inputmode="email">
+          </div>
+          <div>
+            <label class="f" for="phone">Phone <span class="opt">— optional</span></label>
+            <input class="inp" id="phone" maxlength="40" autocomplete="tel" inputmode="tel">
+          </div>
+        </div>
+
+        <div class="mb">
+          <label class="f" for="subject">What's the problem?</label>
+          <input class="inp" id="subject" maxlength="160" placeholder="Printer won't connect, email not sending…" required>
+        </div>
+
+        <div class="mb">
+          <label class="f">How urgent is it?</label>
+          <div class="seg">
+            <label><input type="radio" name="urg" value="low"><span>Low</span></label>
+            <label><input type="radio" name="urg" value="normal" checked><span>Normal</span></label>
+            <label><input type="radio" name="urg" value="urgent"><span>Urgent</span></label>
+          </div>
+          <div class="hint">Urgent means someone can't work right now.</div>
+        </div>
+
+        <div class="mb">
+          <label class="f" for="body">Details</label>
+          <textarea class="inp" id="body" maxlength="4000" required
+            placeholder="What happened, when it started, which computer or person is affected, and anything you've already tried."></textarea>
+          <div class="hint">The more detail, the faster we can sort it out.</div>
+        </div>
+
+        <!-- bots fill this; people never see it -->
+        <div class="hp" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="btn" id="go" type="submit">Send Request</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="foot">
+    TNINFOTECH · Jackson, TN<br>
+    This form is for support requests only.
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+(function(){
+  var URL_BASE = "https://nhduyhaopyctmubzckpt.supabase.co";
+  var KEY = window.TNIT_KEY || "";
+  var openedAt = Date.now();
+
+  var $ = function(id){ return document.getElementById(id); };
+  var form = $("f"), errBox = $("err"), go = $("go");
+
+  function uuid(){
+    if(window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    var b = new Uint8Array(16);
+    (window.crypto && crypto.getRandomValues) ? crypto.getRandomValues(b)
+      : (function(){ for(var i=0;i<16;i++) b[i] = Math.floor(Math.random()*256); })();
+    b[6] = (b[6] & 0x0f) | 0x40; b[8] = (b[8] & 0x3f) | 0x80;
+    var s = Array.prototype.map.call(b, function(x){ return ("0"+x.toString(16)).slice(-2); }).join("");
+    return s.slice(0,8)+"-"+s.slice(8,12)+"-"+s.slice(12,16)+"-"+s.slice(16,20)+"-"+s.slice(20);
+  }
+
+  function fail(msg){
+    errBox.textContent = msg;
+    errBox.style.display = "";
+    errBox.scrollIntoView({ behavior:"smooth", block:"center" });
+    go.disabled = false;
+    go.textContent = "Send Request";
+  }
+
+  function urgency(){
+    var r = document.querySelector('input[name="urg"]:checked');
+    return r ? r.value : "normal";
+  }
+
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    errBox.style.display = "none";
+
+    var company = $("company").value.trim();
+    var contact = $("contact").value.trim();
+    var email   = $("email").value.trim();
+    var phone   = $("phone").value.trim();
+    var subject = $("subject").value.trim();
+    var body    = $("body").value.trim();
+
+    if(!company){ fail("Please tell us which company you're with."); $("company").focus(); return; }
+    if(!contact){ fail("Please tell us your name."); $("contact").focus(); return; }
+    if(!email && !phone){ fail("Please leave an email or a phone number so we can reach you."); $("email").focus(); return; }
+    if(email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ fail("That email address doesn't look right."); $("email").focus(); return; }
+    if(!subject){ fail("Please give it a short title."); $("subject").focus(); return; }
+    if(body.length < 10){ fail("Please add a little more detail about the problem."); $("body").focus(); return; }
+
+    /* quiet spam checks — a real person trips neither */
+    if($("website").value !== ""){ done(uuid()); return; }
+    if(Date.now() - openedAt < 2500){ fail("Give that one more moment and try again."); return; }
+
+    go.disabled = true;
+    go.textContent = "Sending…";
+
+    var id = uuid();
+    var row = {
+      id: id,
+      company: company, contact: contact, email: email, phone: phone,
+      subject: subject, body: body, urgency: urgency(),
+      status: "open", assigned: "", note: "",
+      source: "web",
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      deleted: false
+    };
+
+    var ctl = new AbortController();
+    var timer = setTimeout(function(){ ctl.abort(); }, 20000);
+
+    fetch(URL_BASE + "/rest/v1/tickets", {
+      method: "POST",
+      headers: {
+        "apikey": KEY,
+        "Authorization": "Bearer " + KEY,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify([row]),
+      signal: ctl.signal
+    }).then(function(r){
+      clearTimeout(timer);
+      if(!r.ok) return r.text().then(function(t){ throw new Error(t.slice(0,200)); });
+      done(id);
+    }).catch(function(e){
+      clearTimeout(timer);
+      console.warn("submit", e);
+      fail("We couldn't send that just now. Please try again, or call the office if it's urgent.");
+    });
+  });
+
+  function done(id){
+    $("pane").innerHTML =
+      '<div class="done">' +
+        '<div class="tick">&#10003;</div>' +
+        '<h2>Request received</h2>' +
+        '<p>Thanks — it\'s in our queue and we\'ll be in touch. If it\'s urgent and you haven\'t heard back, give the office a call.</p>' +
+        '<div class="ref">Ref ' + id.slice(0,8).toUpperCase() + '</div>' +
+        '<div><button class="again" id="more">Submit another request</button></div>' +
+      '</div>';
+    var b = $("more");
+    if(b) b.onclick = function(){ location.reload(); };
+  }
+})();
+</script>
+</body>
+</html>
